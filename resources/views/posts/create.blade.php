@@ -6,15 +6,25 @@
 
     <h1>New Post</h1>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error}} </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="/posts" method="POST">
     {{ csrf_field() }}
     <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="text" name="title" class="form-control" aria-describedby="emailHelp">
+            <input type="text" name="title" class="form-control" aria-describedby="emailHelp" value="{{ old('title') }}">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Content</label>
-            <textarea name="content" class="form-control" ></textarea>
+            <textarea name="content" class="form-control" >{{ old('content') }}</textarea>
         </div>
         <button type="submit" class="btn btn-outline-primary">Submit</button>
     </form>
