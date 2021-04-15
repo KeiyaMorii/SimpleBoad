@@ -9,6 +9,8 @@
         @component('components.header')
         @endcomponent
         <div class="container pt-5 pb-5"> <!-- pt-5はBootstrap4に存在するクラスで、padding-top: 3remというCSSが設定される -->
+                @component('components.flash')
+                @endcomponent
             @yield('content')
         </div>
 
